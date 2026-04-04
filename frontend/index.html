@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Marketing Engine</title>
+
+<style>
+
+body {
+font-family: Arial, sans-serif;
+background: linear-gradient(to right, #667eea, #764ba2);
+padding: 40px;
+}
+
+.container {
+background: white;
+padding: 30px;
+border-radius: 12px;
+max-width: 800px;
+margin: auto;
+box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+}
+
+h2 {
+text-align: center;
+color: #333;
+}
+
+textarea {
+width: 100%;
+height: 120px;
+padding: 10px;
+border-radius: 6px;
+border: 1px solid #ddd;
+margin-top: 10px;
+font-size: 16px;
+}
+
+select {
+width: 100%;
+padding: 10px;
+margin-top: 10px;
+border-radius: 6px;
+border: 1px solid #ddd;
+font-size: 16px;
+}
+
+button {
+background: #667eea;
+color: white;
+border: none;
+padding: 12px 20px;
+margin-top: 15px;
+cursor: pointer;
+border-radius: 6px;
+font-size: 16px;
+width: 100%;
+}
+
+button:hover {
+background: #5a67d8;
+}
+
+#output {
+margin-top: 20px;
+white-space: pre-wrap;
+background: #f7f7f7;
+padding: 15px;
+border-radius: 6px;
+border-left: 5px solid #667eea;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚀 AI Marketing Intelligence Engine</h2>
+
+<label>Enter Campaign Topic</label>
+
+<textarea id="topic" placeholder="Example: AI tool for small businesses"></textarea>
+
+<label>Select Content Type</label>
+
+<select id="type">
+<option value="all">All</option>
+<option value="linkedin">LinkedIn</option>
+<option value="instagram">Instagram</option>
+<option value="email">Email</option>
+</select>
+
+<button onclick="generate()">Generate Marketing Content</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+async function generate() {
+
+const topic = document.getElementById("topic").value;
+const type = document.getElementById("type").value;
+
+document.getElementById("output").innerText = "Generating...";
+
+try {
+
+const response = await fetch("http://127.0.0.1:8000/generate", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+topic: topic,
+type: type
+})
+});
+
+const data = await response.json();
+
+document.getElementById("output").innerText =
+data.content || data.error;
+
+} catch (error) {
+document.getElementById("output").innerText =
+"Error: " + error;
+}
+
+}
+
+</script>
+
+</body>
+</html>
