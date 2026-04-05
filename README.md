@@ -146,11 +146,14 @@ frontend/index.html
 
 \## 🌐 Deployment
 
-
-
 Frontend: Netlify / Vercel  
-
 Backend: Render
+
+Frontend Deployed Link
+https://majestic-seahorse-80d91d.netlify.app
+
+Backend Deployed Lionk
+https://ai-marketing-engine-lnlr.onrender.com
 
 
 
